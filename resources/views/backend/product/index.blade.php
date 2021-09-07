@@ -51,9 +51,9 @@
             </tr>
           </tfoot>
           <tbody>
-           
-            @foreach($products as $product)   
-              @php 
+
+            @foreach($products as $product)
+              @php
               $sub_cat_info=DB::table('categories')->select('title')->where('id',$product->child_cat_id)->get();
               // dd($sub_cat_info);
               $brands=DB::table('brands')->select('title')->where('id',$product->brand_id)->get();
@@ -61,13 +61,20 @@
                 <tr>
                     <td>{{$product->id}}</td>
                     <td>{{$product->title}}</td>
-                    <td>{{$product->cat_info['title']}}
-                      <sub>
-                        @foreach($sub_cat_info as $data)
-                          {{$data->title}}
-                        @endforeach
-                      </sub>
+
+                    <td>
+                        @if(!empty($product->cat_info['title']))
+                            {{$product->cat_info['title']}}
+                          <sub>
+                            @foreach($sub_cat_info as $data)
+                              {{$data->title}}
+                            @endforeach
+                          </sub>
+                       @endif
+
+
                     </td>
+
                     <td>{{(($product->is_featured==1)? 'Yes': 'No')}}</td>
                     <td>Rs. {{$product->price}} /-</td>
                     <td>  {{$product->discount}}% OFF</td>
@@ -77,13 +84,13 @@
                     <td>
                       @if($product->stock>0)
                       <span class="badge badge-primary">{{$product->stock}}</span>
-                      @else 
+                      @else
                       <span class="badge badge-danger">{{$product->stock}}</span>
                       @endif
                     </td>
                     <td>
                         @if($product->photo)
-                            @php 
+                            @php
                               $photo=explode(',',$product->photo);
                               // dd($photo);
                             @endphp
@@ -102,7 +109,7 @@
                     <td>
                         <a href="{{route('product.edit',$product->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
                     <form method="POST" action="{{route('product.destroy',[$product->id])}}">
-                      @csrf 
+                      @csrf
                       @method('delete')
                           <button class="btn btn-danger btn-sm dltBtn" data-id={{$product->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
                         </form>
@@ -119,7 +126,7 @@
                             </div>
                             <div class="modal-body">
                               <form method="post" action="{{ route('categorys.destroy',$user->id) }}">
-                                @csrf 
+                                @csrf
                                 @method('delete')
                                 <button type="submit" class="btn btn-danger" style="margin:auto; text-align:center">Parmanent delete user</button>
                               </form>
@@ -127,7 +134,7 @@
                           </div>
                         </div>
                     </div> --}}
-                </tr>  
+                </tr>
             @endforeach
           </tbody>
         </table>
@@ -167,7 +174,7 @@
   <!-- Page level custom scripts -->
   <script src="{{asset('backend/js/demo/datatables-demo.js')}}"></script>
   <script>
-      
+
       $('#product-dataTable').DataTable( {
         "scrollX": false
             "columnDefs":[
@@ -181,7 +188,7 @@
         // Sweet alert
 
         function deleteData(id){
-            
+
         }
   </script>
   <script>
