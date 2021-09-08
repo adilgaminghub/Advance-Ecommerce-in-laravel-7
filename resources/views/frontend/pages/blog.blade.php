@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','E-SHOP || Blog Page')
+@section('title','GH.PK || Blog Page')
 
 @section('main-content')
     <!-- Breadcrumbs -->
@@ -19,7 +19,7 @@
         </div>
     </div>
     <!-- End Breadcrumbs -->
-        
+
     <!-- Start Blog Single -->
     <section class="blog-single shop-blog grid section">
         <div class="container">
@@ -33,12 +33,12 @@
                                 <div class="shop-single-blog">
                                 <img src="{{$post->photo}}" alt="{{$post->photo}}">
                                     <div class="content">
-                                        @php 
+                                        @php
                                             $author_info=DB::table('users')->select('name')->where('id',$post->added_by)->get();
                                         @endphp
                                         <p class="date"><i class="fa fa-calendar" aria-hidden="true"></i> {{$post->created_at->format('d M, Y. D')}}
                                             <span class="float-right">
-                                                <i class="fa fa-user" aria-hidden="true"></i> 
+                                                <i class="fa fa-user" aria-hidden="true"></i>
                                                 @foreach($author_info as $data)
                                                     @if($data->name)
                                                         {{$data->name}}
@@ -78,7 +78,7 @@
                             <h3 class="title">Blog Categories</h3>
                             <ul class="categor-list">
                                 @if(!empty($_GET['category']))
-                                    @php 
+                                    @php
                                         $filter_cats=explode(',',$_GET['category']);
                                     @endphp
                                 @endif
@@ -91,7 +91,7 @@
                                     </li>
                                     @endforeach
                                 </form>
-                                
+
                             </ul>
                         </div>
                         <!--/ End Single Widget -->
@@ -107,11 +107,11 @@
                                     <div class="content">
                                         <h5><a href="#">{{$post->title}}</a></h5>
                                         <ul class="comment">
-                                        @php 
+                                        @php
                                             $author_info=DB::table('users')->select('name')->where('id',$post->added_by)->get();
                                         @endphp
                                             <li><i class="fa fa-calendar" aria-hidden="true"></i>{{$post->created_at->format('d M, y')}}</li>
-                                            <li><i class="fa fa-user" aria-hidden="true"></i> 
+                                            <li><i class="fa fa-user" aria-hidden="true"></i>
                                                 @foreach($author_info as $data)
                                                     @if($data->name)
                                                         {{$data->name}}
@@ -134,7 +134,7 @@
                             <h3 class="title">Tags</h3>
                             <ul class="tag">
                                 @if(!empty($_GET['tag']))
-                                    @php 
+                                    @php
                                         $filter_tags=explode(',',$_GET['tag']);
                                     @endphp
                                 @endif
