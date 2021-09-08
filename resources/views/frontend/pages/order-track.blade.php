@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','E-SHOP || Order Track Page')
+@section('title','GH.PK || Order Track Page')
 
 @section('main-content')
     <!-- Breadcrumbs -->
