@@ -119,7 +119,7 @@
       </thead>
       <tbody>
       @foreach($order->cart_info as $cart)
-      @php 
+      @php
         $product=DB::table('products')->select('title')->where('id',$cart->product_id)->get();
       @endphp
         <tr>
@@ -152,7 +152,18 @@
             $shipping_charge=DB::table('shippings')->where('id',$order->shipping_id)->pluck('price');
           @endphp
           <th scope="col" class="text-right ">Shipping:</th>
-          <th><span>${{number_format($shipping_charge[0],2)}}</span></th>
+          <th><span>
+                    @foreach($shipping_charge as $data)
+
+                      @if(!empty($data))
+                          $ {{number_format($data,2)}}
+
+                      @else
+                          Not Available
+                      @endif
+                  @endforeach
+
+              </span></th>
         </tr>
         <tr>
           <th scope="col" class="empty"></th>
