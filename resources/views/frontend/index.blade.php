@@ -315,7 +315,8 @@
                                 <div class="col-lg-6 col-md-6 col-12 no-padding">
                                     <div class="content">
                                         <h4 class="title"><a href="#">{{$product->title}}</a></h4>
-                                        <p class="price with-discount">Rs {{number_format($product->discount,2)}}</p>
+                                        <p class="price with-discount">Rs <del>{{$product->price}}</del> <br> OFF {{number_format($product->discount,0)}}% <br>
+                                           Rs {{ abs((($product->price*$product->discount)/100)-$product->price)  }} </p>
                                     </div>
                                 </div>
                                 </div>

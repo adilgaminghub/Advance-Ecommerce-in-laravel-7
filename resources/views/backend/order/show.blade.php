@@ -1,3 +1,11 @@
+
+@if(!empty($order->id) && $order->id!== null)
+
+@else
+    <script>window.location = "{{ route('admin') }}";</script>
+    <?php exit; ?>
+@endif
+
 @extends('backend.layouts.master')
 
 @section('title','Order Detail')
