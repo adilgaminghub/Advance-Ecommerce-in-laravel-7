@@ -122,9 +122,9 @@ Version:1.0
 .header.shop .nav .dropdown li {
 	display:block;
 }
-.hero-slider {
+/*.hero-slider {
 	height: 416px;
-}
+}*/
 .hero-slider .hero-text {
 	margin-top: 80px;
 }
