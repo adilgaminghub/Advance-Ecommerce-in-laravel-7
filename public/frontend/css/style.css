@@ -1543,11 +1543,8 @@ Version:1.0
 	-moz-transition:all 0.4s ease;
 	transition:all 0.4s ease;
 }
-.small-banner .single-banner .content {
-	position: absolute;
-	left: 0;
-	top: 50%;
-	transform: translateY(-50%);
+.small-banner .single-banner  .content{
+
 	padding-left: 35px;
 }
 .small-banner .single-banner h3 {
@@ -1600,12 +1597,9 @@ Version:1.0
 	-moz-transition:all 0.4s ease;
 	transition:all 0.4s ease;
 }
-.midium-banner .single-banner .content {
+.midium-banner .single-banner .content{
 	padding-left:50px;
-	position: absolute;
-	left: 0;
-	top: 50%;
-	transform:translateY(-50%);
+
 }
 .midium-banner .single-banner h3 {
 	font-size: 27px;
